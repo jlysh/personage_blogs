@@ -17,6 +17,18 @@
 <script src="js/jquery-2.1.4.min.js"></script>
 <script src="js/nprogress.js"></script>
 <script src="js/jquery.lazyload.min.js"></script>
+  <meta http-equiv="Content-Type" content="text/html;charset=utf-8">
+
+  <title>Modal Login Window Demo</title>
+
+  <link rel="stylesheet" type="text/css" media="all" href="style.css">
+
+  <script type="text/javascript" src="js/jquery-1.9.1.min.js"></script>
+  <script type="text/javascript" src="js/jquery-1.11.2.min.js"></script>
+  <script type="text/javascript" charset="utf-8" src="js/jquery.leanModal.min.js"></script>
+
+  <!-- jQuery plugin leanModal under MIT License http://leanmodal.finelysliced.com.au/ -->
+
 <!--[if gte IE 9]>
   <script src="js/jquery-1.11.1.min.js" type="text/javascript"></script>
   <script src="js/html5shiv.min.js" type="text/javascript"></script>
@@ -27,6 +39,7 @@
   <script>window.location.href='upgrade-browser.html';</script>
 <![endif]-->
 </head>
+
 <body class="user-select">
 <header class="header">
 <nav class="navbar navbar-default" id="navbar">
@@ -43,7 +56,7 @@
 			 勤记录 懂分享</div>
   <div class="navbar-header">
 	<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#header-navbar" aria-expanded="false"> <span class="sr-only"></span> <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span> </button>
-	<h1 class="logo hvr-bounce-in"><a href="#" title="江冷易水寒博客"><img src="images/201610171329086541.png" alt="江冷易水寒博客"></a></h1>
+	<h1 class="logo hvr-bounce-in"><a href="#" title="简竹博客"><img src="images/1.png" alt="简竹博客"></a></h1>
   </div>
   <div class="collapse navbar-collapse" id="header-navbar">
 	<form class="navbar-form visible-xs" action="/Search" method="post">
@@ -61,10 +74,59 @@
 	  <li><a data-cont="" title="#" href="index.html">下载</a></li>
 	  <li><a data-cont="" title="#" href="index.html">留言</a></li>
 	  <li><a data-cont="" title="#" href="index.html">关于</a></li>
-	  <li><a href="login/login.html"; onclik="comment(this)" > <img class="#" src="images/user.gif" alt="简竹博客" title=“简竹博客” style="margin-top:2px;"> </a>
+	  <div style="width:40px; height:40px; border-radius:100%; overflow:hidden;"><li><a href="#loginmodal"  id="modaltrigger" onclik="comment(this)"> <img class="#" src="images/user.gif" alt="简竹博客" title=“简竹博客” style="margin-top:0px;"> </a>	</div>
 	</ul>
+
   </div>
 </div>
+
+<!-- 悬浮窗登陆模块 -->
+	  <div id="loginmodal" style="display:none;">
+
+    <h1>用户登陆</h1>
+
+    <form id="loginform" name="loginform" method="post" action="index.html">
+
+      <label for="username">用户名:</label>
+
+      <input type="text" name="username" id="username" class="txtfield" tabindex="1">
+
+      
+
+      <label for="password">密码:</label>
+
+      <input type="password" name="password" id="password" class="txtfield" tabindex="2">
+
+      
+
+      <div class="center"><input type="submit" name="loginbtn" id="loginbtn" class="flatbtn-blu hidemodal" value="登陆" tabindex="3"></div>
+
+    </form>
+
+  </div>
+
+<script type="text/javascript">
+
+$(function(){
+
+  $('#loginform').submit(function(e){
+
+    return false;
+
+  });
+
+  
+
+  $('#modaltrigger').leanModal({ top: 110, overlay: 0.45, closeButton: ".hidemodal" });
+
+});
+
+</script>
+
+
+	
+<!-- 悬浮窗登陆模块 -->
+
 </nav>
 </header>
 <section class="container">
@@ -275,4 +337,471 @@
 <script src="js/jquery.ias.js"></script>
 <script src="js/scripts.js"></script>
 </body>
+
+<script type="text/javascript">
+    $(function () {
+        H_login = {};
+        H_login.openLogin = function () {
+            $('.login-header a').click(function () {
+                switchTag('_xka', '_xka_list', 1, 2, 'conxk1', 'conxk2');
+                $('.js_login').show();
+                $('.login-bg').show();
+            });
+            $('.login-header1 a').click(function () {
+                switchTag('_xka', '_xka_list', 2, 2, 'conxk1', 'conxk2');
+                $('.js_login').show();
+                $('.login-bg').show();
+            });
+        };
+        H_login.closeLogin = function () {
+            $('.close-login').click(function () {
+                $('.js_login').hide();
+                $('.login-bg').hide();
+            });
+        };
+        H_login.loginForm = function () {
+            //$("#login-sub").on('click', function () {
+            //    //alert("OK");
+            //    var username = $("#logusername");
+            //    var usernameValue = $("#logusername").val();
+            //    var password = $("#logpassword");
+            //    var passwordValue = $("#logpassword").val();
+            //    if (usernameValue == "") {
+            //        alert("用户名不能为空");
+            //        username.focus();
+            //        return false;
+            //    } else if (usernameValue.length > 15) {
+            //        alert("用户名长度不能大于15字符");
+            //        username.focus();
+            //        return false;
+            //    } else if (passwordValue == "") {
+            //        alert("密码不能为空");
+            //        password.focus();
+            //        return false;
+            //    } else if (passwordValue.length < 6 || passwordValue.length > 30) {
+            //        alert("密码长度不能小于6或大于30位字符");
+            //        password.focus();
+            //        return false;
+            //    } else {
+            //        alert("登录成功");
+            //        setTimeout(function () {
+            //            $('.js_login').hide();
+            //            $('.login-bg').hide();
+            //            $('.list-input').val('');
+            //        }, 100);
+            //    }
+            //});
+
+            //$("#Reg-sub").on('click', function () {
+            //    var usernameValue = $("#username").val();
+            //    var passwordValue = $("#password").val();
+            //    var realNameValue = $("#realName").val();
+            //    var telephoneValue = $("#telephone").val();
+            //    var emailValue = $("#email").val();
+
+            //    alert(usernameValue + passwordValue + realNameValue + telephoneValue + emailValue);
+            //});
+            //$("#login-submokaoba").on('click', function () {
+            //    var username = $("#logusername");
+            //    var usernameValue = $("#logusername").val();
+            //    var password = $("#logpassword");
+            //    var passwordValue = $("#logpassword").val();
+            //    /*
+            //    $.post("/AjaxControls/AjaxLoginPage.ashx", { Action: "post", OperatingMode: "login", UserName: usernameValue, Password: passwordValue },
+            //    function (data, textStatus) {
+            //        if (data.result == "ok") {
+            //        }
+            //        else {
+            //            alert(data.result);
+            //        }
+            //        return false;
+            //    }, "json");
+            //    return false;*/
+            //    alert(usernameValue + passwordValue);
+            //});
+            //$("#Reg-submokaoba").on('click', function () {
+            //    var usernameValue = $("#UserName").val();
+            //    var passwordValue = $("#Password").val();
+            //    var realNameValue = $("#RealName").val();
+            //    var telephoneValue = $("#Telephone").val();
+            //    var emailValue = $("#Mail").val();
+            //    /*
+            //    $.post("/AjaxControls/AjaxLoginPage.ashx", { Action: "post", OperatingMode: "zhuce", UserName: usernameValue, Password: passwordValue, RealName: realNameValue, Telephone: telephoneValue, Mail: emailValue },
+            //    function (data, textStatus) {
+            //        if (data.result == "ok") {
+            //        }
+            //        else {
+            //            alert(data.result);
+            //        }
+            //        return false;
+            //    }, "json");
+            //    return false;   usernameValue + passwordValue + realNameValue + telephoneValue + emailValue*/
+            //    alert(usernameValue + passwordValue + realNameValue + telephoneValue + emailValue);
+            //});
+        };
+        H_login.run = function () {
+            this.closeLogin();
+            this.openLogin();
+            this.loginForm();
+        };
+        H_login.run();
+    });
+    function switchTag(tag, content, k, n, stylea, styleb) {
+        for (i = 1; i <= n; i++) {
+            if (i == k) {
+                document.getElementById(tag + i).className = stylea;
+                document.getElementById(content + i).className = "showbox"
+
+            } else {
+                document.getElementById(tag + i).className = styleb;
+                document.getElementById(content + i).className = "hidden"
+            }
+        }
+    };
+
+    function kaoshi110_ajaxlogin() {
+        var username = $("#logusername");
+        var usernameValue = $("#logusername").val();
+        var password = $("#logpassword");
+        var passwordValue = $("#logpassword").val();
+        alert(usernameValue + passwordValue);
+        //$.post("/AjaxControls/AjaxLoginPage.ashx", { Action: "post", OperatingMode: "login", UserName: usernameValue, Password: passwordValue },
+        //function (data, textStatus) {
+        //    if (data.result == "ok") {
+        //    }
+        //    else {
+        //        alert(data.result);
+        //    }
+        //    return false;
+        //}, "json");
+        //return false;
+    }
+
+    function confirmationusername() {
+        var username = $('#logusername').val();
+        $.post("/AjaxControls/confirmationusername.ashx", { Action: "post", UserName: username },
+        function (data, textStatus) {
+            if (data.result == "ok") {
+                $('#username_info').html("用户名合法"); $('#username_errinfo').html("");
+                $('#logusername').css('background', "white");
+            }
+            else {
+                $('#username_errinfo').html(data.result); $('#username_info').html("");
+                $('#logusername').css('background', "red");
+            }
+            return false;
+        }, "json");
+        return false;
+    }
+
+    function kaoshi110_ajaxzhuce() {
+        var usernameValue = $("#UserName").val();
+        var passwordValue = $("#Password").val();
+        var realNameValue = $("#RealName").val();
+        var telephoneValue = $("#Telephone").val();
+        var emailValue = $("#Mail").val();
+        alert(usernameValue + passwordValue + realNameValue + telephoneValue + emailValue);
+        //$.post("/AjaxControls/AjaxLoginPage.ashx", { Action: "post", OperatingMode: "zhuce", UserName: usernameValue, Password: passwordValue, RealName: realNameValue, Telephone: telephoneValue, Mail: emailValue },
+        //function (data, textStatus) {
+        //    if (data.result == "ok") {
+        //    }
+        //    else {
+        //        alert(data.result);
+        //    }
+        //    return false;
+        //}, "json");
+        //return false;
+    }
+</script>
+
+<style type="text/css">
+        @charset "utf-8";
+        /*/////*登陆//////by liangguanyu/////*/
+        .js_login h1, h2, h3, h4, h5, h6, p, ul, li {
+            padding: 0;
+            margin: 0;
+            list-style: none;
+        }
+
+        .login-header {
+            text-align: center;
+            height: 30px;
+            font-size: 24px;
+            line-height: 30px;
+        }
+
+        .js_login {
+            display: none;
+            position: fixed;
+            opacity: 1;
+            z-index: 11000;
+            left: 50%;
+            margin-left: -250px;
+            top: 100px;
+        }
+
+            .js_login a {
+                color: blue;
+                text-decoration: none;
+            }
+
+    .sub_btn1 { /*position:absolute; right:0px; top:50px;*/
+        width:105px;
+        height:35px;
+        display: inline-block;
+        zoom: 1; /* zoom and *display = ie7 hack for display:inline-block */
+        *display: inline;
+        vertical-align: baseline;
+        margin: 0 2px;
+        outline: none;
+        cursor: pointer;
+        text-align: center;
+        align-content:center
+        font: 15px/100% Arial, Helvetica, sans-serif;
+        text-shadow: 0 1px 1px rgba(0,0,0,.6);
+        -webkit-border-radius: 3px;
+        -moz-border-radius: 3px;
+        border-radius: 3px;
+        -webkit-box-shadow: 0 1px 2px rgba(0,0,0,.2);
+        -moz-box-shadow: 0 1px 2px rgba(0,0,0,.2);
+        box-shadow: 0 1px 2px rgba(0,0,0,.2);
+        color: white; /*#e8f0de*/
+        border: solid 1px #538312;
+        background: #64991e; /* #64991e*/
+        background: -webkit-gradient(linear, left top, left bottom, from(#43CD80), to(#3CB371)); /*#7db72f   #4e7d0e*/
+        background: -moz-linear-gradient(top, #7db72f, #4e7d0e);
+        filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#7db72f', endColorstr='#4e7d0e');
+    }
+
+            .sub_btn1:hover {
+                background: #538018;
+                background: -webkit-gradient(linear, left top, left bottom, from(#2E8B57), to(#008B45));
+                background: -moz-linear-gradient(top, #6b9d28, #436b0c);
+                filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#6b9d28', endColorstr='#436b0c');
+            }
+
+        .inputbg {
+            height: 40px;
+            width: 280px;
+            margin: 0 auto;
+            margin-top: 20px;
+            border-radius: 4px;
+            border: 1px solid #eee;
+            text-align: left;
+            color: #333;
+        }
+
+        #username * {
+            vertical-align: middle;
+        }
+
+        .inputsub {
+            outline: 0;
+            font-family: Tahoma,Geneva,sans-serif;
+            font-size: 14px;
+            width: 270px;
+            float: left;
+            border: none;
+            text-align: left;
+            color: #333;
+            margin: 10px 0 3px 8px;
+            background: none;
+            overflow: hidden;
+        }
+
+        .buttons {
+            width: 280px;
+            margin: 0 auto;
+            margin-top: 25px;
+            text-align: left;
+        }
+
+        #login-submokaoba {
+            width: 105px;
+            height: 35px;
+        }
+
+        #qql {
+            float: right;
+        }
+
+        .reg {
+            padding: 20px;
+            margin: 0 auto;
+            width: 280px;
+        }
+
+        #login {
+            margin-top: 20px;
+        }
+
+        .hidden {
+            display: none;
+        }
+
+        .js_login {
+            position: absolute;
+            width: 500px;
+            background: #fff;
+            display: none;
+            color: #999;
+        }
+
+            .js_login .js_title {
+                overflow: hidden;
+                height: 42px;
+                background: #f9f9f9 url(http://www.bi126.com/images/con2_title_bg.png) repeat-x;
+                border-left: 1px solid #ccc;
+                border-right: 1px solid #ccc;
+            }
+
+                .js_login .js_title span {
+                    float: right;
+                    line-height: 40px;
+                    padding: 0 9px;
+                    cursor: pointer;
+                    font-family: "";
+                    font-size: 30px;
+                }
+
+                    .js_login .js_title span:hover {
+                        color: #555;
+                    }
+
+                .js_login .js_title li {
+                    float: left;
+                    width: 130px;
+                    text-align: center;
+                    font-family: "微软雅黑";
+                    font-size: 18px;
+                    cursor: pointer;
+                    height: 43px;
+                }
+
+                    .js_login .js_title li a {
+                        float: left;
+                        width: 130px;
+                        text-align: center;
+                    }
+
+                        .js_login .js_title li a:hover {
+                        }
+
+        .conxk1 {
+            border-top: 3px solid #15B300;
+            border-right: 1px solid #dfdfdf;
+            background: #fff;
+            height: 39px;
+            line-height: 39px;
+            color: #11B200;
+        }
+
+            .conxk1 a {
+                color: #11B200;
+            }
+
+                .conxk1 a:hover {
+                    color: #11B200;
+                    text-decoration: none;
+                }
+
+        .conxk2 {
+            border-right: 1px solid #dfdfdf;
+            height: 39px;
+            line-height: 39px;
+            padding-top: 3px;
+            color: #646464;
+        }
+
+            .conxk2 a {
+                color: #646464;
+            }
+
+                .conxk2 a:hover {
+                    color: #646464;
+                    text-decoration: none;
+                }
+
+        .js_login .js_content {
+            overflow: hidden;
+            padding: 13px 15px;
+            background: #fff;
+            border: 1px solid #ccc;
+            border-top-width: 0px;
+        }
+
+            .js_login .js_content .de_list {
+                width: 100%;
+                padding-top: 12px;
+            }
+
+            .js_login .js_content a:visited {
+                color: blue;
+            }
+
+            .js_login .js_content a:hover {
+                color: red;
+                text-decoration: underline;
+            }
+
+        .Reg-input {
+            display: block;
+            clear: both;
+            padding: 5px 0;
+        }
+
+            .Reg-input li {
+                display: inline;
+                float: left;
+            }
+
+            .Reg-input .input-text {
+                width: 220px;
+                height: 25px;
+                border: 1px solid #ccc;
+                outline: none;
+                border-radius: 2px;
+            }
+
+        .input-text:focus {
+            border: 1px solid #339933;
+        }
+
+        .Reg-input .Reg-text {
+            width: 100px;
+            text-align: right;
+            font-size: 14px;
+        }
+
+        .Reg-input .input_text {
+            width: 70px;
+            float: left;
+        }
+
+        .js_login #checkbox {
+            text-align: left;
+        }
+
+        .js_login #errmsg {
+            color: red;
+        }
+
+        .js_login .sub_btn1 {
+            font-size: 20px;
+        }
+
+        #lean_overlay {
+            position: fixed;
+            z-index: 100;
+            top: 0px;
+            left: 0px;
+            height: 100%;
+            width: 100%;
+            background: #000;
+            display: none;
+        }
+        /** modal window styles **/
+
+    </style>
+
 </html>

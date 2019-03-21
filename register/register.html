@@ -20,6 +20,30 @@
 					<canvas id="demo-canvas"></canvas>
 					<div class="logo_box">
 						<h3>小可爱请注册</h3>
+						
+						
+								<script language="javascript">  
+								function isValid(form)  
+								{  
+								if (form.username.value=="")  
+								 {  
+								 alert("用户名不能为空");  
+								 return false;  
+								 }  
+								if (form.pwd.value!=form.pwd2.value)  
+								{  
+								alert("两次输入的密码不同！");  
+								return false;  
+								}  
+								else  if (form.pwd.value=="")  
+								{  
+								alert("用户密码不能为空！");  
+								return false;  
+								}  
+								else return true;  
+								}  
+								</script> 
+						
 						<form action="#" name="f" method="post">
 							<div class="input_outer">
 								<span class="u_user"></span>
